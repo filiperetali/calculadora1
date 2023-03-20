@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Document</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        body{ background-color: black;color: wheat;}
+        .calculadora{
+            padding: 30px;
+            border-radius: 10px;
+            background-color: rgba(223, 133, 16, 0.616);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .linha{ display: flex;}
+        .botao{ margin: 3px; }
+        .botao button{
+            height: 50px; width: 50px;
+            border-radius: 10px; font-size: large;
+        }
+        .botao button:hover{ background-color: rgba(0, 0, 0, 0.425);}
+        #resultado{ height: 30px; width: 223px; margin-bottom: 5px;
+            background-color: aquamarine; color:black;
+        text-align: right; line-height: 30px;}
+
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <div class="linha">
+            <p id="resultado">Resultado visor</p>
+        </div>
+        <div class="linha">
+            <div class="botao" onclick="insira('')">
+                <button>NumLk</button>
+            </div>
+            <div class="botao" onclick="insira('/')">
+                <button>/</button>
+            </div>
+            <div class="botao" onclick="insira('*')">
+                <button>*</button>
+            </div>
+            <div class="botao" onclick="insira('-')">
+                <button>-</button>
+            </div>
+        </div>
+        <div class="linha">
+            <div class="botao" onclick="insira('7')">
+                <button>7</button>
+            </div>
+            <div class="botao" onclick="insira('8')">
+                <button>8</button>
+            </div>
+            <div class="botao" onclick="insira('9')">
+                <button>9</button>
+            </div>
+            <div class="botao" onclick="insira('+')">
+                <button>+</button>
+            </div>
+        </div>
+        <div class="linha">
+            <div class="botao" onclick="insira('4')">
+                <button>4</button>
+            </div>
+            <div class="botao" onclick="insira('5')">
+                <button>5</button>
+            </div>
+            <div class="botao" onclick="insira('6')">
+                <button>6</button>
+            </div>
+            <div class="botao" onclick="insira('.')">
+                <button>.</button>
+            </div>
+        </div>
+        <div class="linha">
+            <div class="botao" onclick="insira('1')">
+                <button>1</button>
+            </div>
+            <div class="botao" onclick="insira('2')">
+                <button>2</button>
+            </div>
+            <div class="botao" onclick="insira('3')">
+                <button>3</button>
+            </div>
+            <div class="botao" onclick="volta()">
+                <button><</button>
+            </div>
+        </div>
+        <div class="linha">
+            <div class="botao" onclick="insira('0')">
+                <button>0</button>
+            </div>
+            <div class="botao" onclick="insira(',')">
+                <button>,</button>
+            </div>
+            <div class="botao">
+                <button></button>
+            </div>
+            <div class="botao" onclick="calcula()">
+                <button>=</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function insira(num){
+            if(num==''){
+                document.getElementById('resultado').innerHTML = '';
+            }
+            else{
+                var valor = document.getElementById('resultado').innerHTML;
+                document.getElementById('resultado').innerHTML = valor + num;
+            }
+        }
+        function volta(){
+            var valor = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = valor.substring(0,valor.length-1);       
+        }
+        function calcula(){
+            var resultado = document.getElementById('resultado').innerHTML;
+            if(resultado){
+                document.getElementById('resultado').innerHTML = eval(resultado);
+            }
+        }
+    </script>
+</body>
+</html>
